@@ -3,10 +3,6 @@ import 'NavigationDrawer.dart';
 import 'GradientAppBar.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _HomePageState createState() => _HomePageState();
 }

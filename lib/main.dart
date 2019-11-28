@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quickdrop/HomePage.dart';
-import 'LoginPage/LoginPage.dart';
+import 'RootPage.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:quickdrop/ViewModel.dart';
+import 'ViewModel.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
             primaryColor: Color(0xff48c6ef),
             accentColor: Color(0xff6f86d6),
           ),
-          home: LoginPage(),
+          home: RootPage(),
         ));
   }
 }
