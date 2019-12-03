@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
-import 'package:quickdrop/HomePage.dart';
+import 'package:quickdrop/Ui/Pages/HomePage.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:quickdrop/ViewModel.dart';
 

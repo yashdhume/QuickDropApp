@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quickdrop/LoginPage/LoginPage.dart';
-import 'RootPage.dart';
+import 'package:quickdrop/Ui/Pages/LoginPage.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'ViewModel.dart';
-import 'package:quickdrop/Network/FileTransfer.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

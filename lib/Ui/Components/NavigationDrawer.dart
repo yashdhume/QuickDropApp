@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quickdrop/LoginPage/LoginPage.dart';
+import 'package:quickdrop/Ui/Pages/LoginPage.dart';
 import 'OvalClip.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class GradientAppBar extends StatelessWidget {
   final String title;
   final String heroTag;
+
   GradientAppBar(this.title, this.heroTag);
 
   Widget build(BuildContext context) {
@@ -19,15 +20,15 @@ class GradientAppBar extends StatelessWidget {
               tileMode: TileMode.clamp)),
       child: new Center(
         child: new Hero(
-          tag: heroTag,
+            tag: heroTag,
             child: Text(
-          title,
-          style: const TextStyle(
-              color: Colors.white,
-              fontFamily: 'Franklin',
-              //fontWeight: FontWeight.w600,
-              fontSize: 26.0),
-        )),
+              title,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Franklin',
+                  //fontWeight: FontWeight.w600,
+                  fontSize: 26.0),
+            )),
       ),
     );
   }

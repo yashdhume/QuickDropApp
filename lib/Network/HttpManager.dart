@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
+
 class HTTPManager {
   static HTTPManager _instance = new HTTPManager.internal();
 
@@ -19,6 +22,7 @@ class HTTPManager {
         if (code >= 200) {
           return true;
         }
+        return false;
       });
   static Dio dio = Dio(options);
 
@@ -28,7 +32,7 @@ class HTTPManager {
       final int statusCode = response.statusCode;
 
       if (statusCode < 200 || statusCode > 400 || json == null) {
-        throw new Exception("Error while fetching data");
+        throw new Exception("Error while fetching data. Error code: ${response.statusCode}");
       }
       return _decoder.convert(res);
     });
@@ -37,14 +41,12 @@ class HTTPManager {
   Future<dynamic> post(String url, Map<String, dynamic> body) {
     print(body);
 
-    return dio
-        .post('',data: body)
-        .then((Response response) {
+    return dio.post('', data: body).then((Response response) {
       final String responseBody = response.data;
       print(responseBody);
       final int statusCode = response.statusCode;
       if (statusCode < 200 || statusCode > 400 || json == null) {
-        throw new Exception("Error while fetching data");
+        throw new Exception("Error while fetching data. Error code: ${response.statusCode}");
       }
       return _decoder.convert(responseBody);
     });
