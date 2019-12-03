@@ -10,24 +10,23 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPage extends State<RootPage> {
+  bool isSocketRun;
   void initState() {
     super.initState();
+    isSocketRun = true;
   }
 
+  Widget runSocket(ViewModel model) {
+    if (isSocketRun) {
+      model.initSocket();
+      isSocketRun = false;
+    }
+    return LoginPage();
+  }
+  @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<ViewModel>(
-        rebuildOnChange: true, builder: (context, child, model) =>
-        runSocket(model));
+        rebuildOnChange: true,
+        builder: (context, child, model) => LoginPage());
   }
-}
-bool isSocketRun = true;
-
-Widget runSocket(ViewModel model){
-  if(isSocketRun) {
-    model.initSocket();
-    isSocketRun = false;
-    return LoginPage();
-
- }
-  return LoginPage();
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:quickdrop/LoginPage/LoginPage.dart';
 import 'OvalClip.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 final Color primary = Color(0xff291747);
 final Color active = Colors.white;
 
-buildDrawer() {
+buildDrawer(BuildContext context) {
   return ClipPath(
     clipper: OvalRightBorderClipper(),
     child: Drawer(
@@ -37,18 +39,19 @@ buildDrawer() {
                   "Yash Dhume",
                   style: TextStyle(color: Colors.white, fontSize: 18.0),
                 ),
-
                 SizedBox(height: 30.0),
-                _buildRow(Icons.home, "Home"),
+                _buildRow(Icons.home, "Home", context),
                 _buildDivider(),
-                _buildRow(Icons.folder, "Files"),
+                _buildRow(Icons.folder, "Files", context),
                 _buildDivider(),
-                _buildRow(Icons.people, "Freinds"),
+                _buildRow(Icons.people, "Freinds", context),
                 _buildDivider(),
-                _buildRow(Icons.settings, "Settings"),
+                _buildRow(Icons.settings, "Settings", context),
                 _buildDivider(),
-                _buildRow(Icons.info, "Help"),
+                _buildRow(Icons.info, "Help", context),
                 _buildDivider(),
+                _buildRow(FontAwesomeIcons.signOutAlt, "Sign Out", context),
+                _buildDivider()
               ],
             ),
           ),
@@ -64,20 +67,24 @@ Divider _buildDivider() {
   );
 }
 
-Widget _buildRow(IconData icon, String title) {
+Widget _buildRow(IconData icon, String title, BuildContext context) {
   final TextStyle tStyle = TextStyle(color: active, fontSize: 16.0);
   return Container(
-    padding: const EdgeInsets.symmetric(vertical: 8.0),
-    child: Row(children: [
-      Icon(
-        icon,
-        color: active,
-      ),
-      SizedBox(width: 10.0),
-      Text(
-        title,
-        style: tStyle,
-      ),
-    ]),
-  );
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: GestureDetector(
+        onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        )),
+        child: Row(children: [
+          Icon(
+            icon,
+            color: active,
+          ),
+          SizedBox(width: 10.0),
+          Text(
+            title,
+            style: tStyle,
+          ),
+        ]),
+      ));
 }

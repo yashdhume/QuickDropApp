@@ -9,40 +9,41 @@ class AuthService {
   String token;
 
   AuthService({this.url});
-
-  Future<bool> login(String username, String password) {
+  Future<Map<String, dynamic>> login(String username, String password){
     Map<String, dynamic> json = {
       "requestType": "signIn",
       "account": {"username": username, "password": password}
     };
-    print("FUCKIN WORK YOU CUNT");
-    return _httpManager.post(url, json).then((dynamic res) {
-      print(res.toString());
-      if (res["errorCode"] != 0) throw new Exception(res["errorMessage"]);
-      token = jsonDecode(res.body)['token'];
-      return true;//new User.map(res["username"]);
+    return _httpManager.post(url, json).then((dynamic response) {
+      print(response.toString());
+      //if (response["errorCode"] != 0) throw new Exception(response["errorMessage"]);
+      //storeToken(response['responseData']['tokenKey']);
+      return response;
     });
   }
-  Future<bool> storeToken()async {
-    if (token != null){
-      final storage = new FlutterSecureStorage();
-      await storage.write(key: 'token', value: this.token);
-      return true;
-    }
-    return false;
-  }
-  Future<bool> removeToken()async{
-    final storage = new FlutterSecureStorage();
-    await storage.deleteAll();
-    return true;
-  }
-  Future<bool> hasToken() async{
-    final storage = new FlutterSecureStorage();
-    String t =  await storage.read(key: 'token');
-    if (t != null){
-      token = t;
-      return true;
-    }
-    return false;
+  /*Future<Map<String, dynamic>> login(String username, String password) {
+    Map<String, dynamic> json = {
+      "requestType": "signIn",
+      "account": {"username": username, "password": password}
+    };
+    print(json);
+    return _httpManager.post(url, json).then((dynamic response) {
+      print(response.toString());
+      //if (response["errorCode"] != 0) throw new Exception(response["errorMessage"]);
+      //token = response['tokenKey'];
+      return response;
+    });
+  }*/
+  Future<Map<String, dynamic>> createAccount(String username, String email, String password) {
+    Map<String, dynamic> json = {
+      "requestType": "createAccount",
+      "account": {"username": username, "password": password, "email": email}
+    };
+    print(json);
+    return _httpManager.post(url, json).then((dynamic response) {
+      print(response.toString());
+      //token = response['tokenKey'];
+      return response;
+    });
   }
 }
